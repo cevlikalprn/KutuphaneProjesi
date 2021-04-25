@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/uygulama_navigation"
+    app:startDestination="@id/girisFragment">
+
+    <fragment
+        android:id="@+id/girisFragment"
+        android:name="com.alisamil.kutuphaneprojesi.GirisFragment"
+        android:label="fragment_giris"
+        tools:layout="@layout/fragment_giris" >
+        <action
+            android:id="@+id/action_girisFragment_to_kayitFragment"
+            app:destination="@id/kayitFragment" />
+        <action
+            android:id="@+id/action_girisFragment_to_katagoriFragment"
+            app:destination="@id/katagoriFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kitapEkleFragment"
+        android:name="com.alisamil.kutuphaneprojesi.KitapEkleFragment"
+        android:label="fragment_kitap_ekle"
+        tools:layout="@layout/fragment_kitap_ekle" >
+        <action
+            android:id="@+id/action_kitapEkleFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kayitFragment"
+        android:name="com.alisamil.kutuphaneprojesi.KayitFragment"
+        android:label="fragment_kayit"
+        tools:layout="@layout/fragment_kayit" >
+        <action
+            android:id="@+id/action_kayitFragment_to_girisFragment"
+            app:destination="@id/girisFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.alisamil.kutuphaneprojesi.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_kitapEkleFragment"
+            app:destination="@id/kitapEkleFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_profilFragment"
+            app:destination="@id/profilFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_kitapGoruntuleFragment"
+            app:destination="@id/kitapGoruntuleFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_katagoriFragment"
+            app:destination="@id/katagoriFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profilFragment"
+        android:name="com.alisamil.kutuphaneprojesi.ProfilFragment"
+        android:label="fragment_profil"
+        tools:layout="@layout/fragment_profil" >
+        <action
+            android:id="@+id/action_profilFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kitapGoruntuleFragment"
+        android:name="com.alisamil.kutuphaneprojesi.KitapGoruntuleFragment"
+        android:label="fragment_kitap_goruntule"
+        tools:layout="@layout/fragment_kitap_goruntule" >
+        <action
+            android:id="@+id/action_kitapGoruntuleFragment_to_profilFragment"
+            app:destination="@id/profilFragment" />
+        <action
+            android:id="@+id/action_kitapGoruntuleFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/katagoriFragment"
+        android:name="com.alisamil.kutuphaneprojesi.KatagoriFragment"
+        android:label="fragment_katagori"
+        tools:layout="@layout/fragment_katagori" >
+        <action
+            android:id="@+id/action_katagoriFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+</navigation>
