@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.alisamil.kutuphaneprojesi.R;
 
@@ -66,6 +67,8 @@ public class KitapEkleFragment extends Fragment {
                 String bookSummary=kitapOzeti.getText().toString();
                 EditText kitapAdedi=(EditText) view.findViewById(R.id.asdsaa);
                 String bookPiece=kitapAdedi.getText().toString();
+                EditText kategorii=(EditText) view.findViewById(R.id.kategori_edit_text);
+                String kategori=kategorii.getText().toString();
 
 
 
@@ -96,7 +99,23 @@ public class KitapEkleFragment extends Fragment {
 
 
             }
+
+
         });
+
+        ImageView imageView=view.findViewById(R.id.kitapEkleBackButton);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                NavDirections action=KitapEkleFragmentDirections.actionKitapEkleFragmentToMainFragment();
+                Navigation.findNavController(v).navigate(action);
+
+            }
+        });
+
+
+
 
     }
 }

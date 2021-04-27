@@ -1,5 +1,7 @@
 package com.alisamil.kutuphaneprojesi.view.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -97,6 +99,7 @@ public class GirisFragment extends Fragment implements View.OnClickListener{
                                     {
                                         NavDirections action = GirisFragmentDirections.actionGirisFragmentToKatagoriFragment();
                                         Navigation.findNavController(v).navigate(action);
+
                                     }
                                     else
                                     {

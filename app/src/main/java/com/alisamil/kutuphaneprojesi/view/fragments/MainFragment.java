@@ -1,6 +1,7 @@
 package com.alisamil.kutuphaneprojesi.view.fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -58,10 +59,13 @@ public class MainFragment extends Fragment {
         ArrayList<String> yazarArray = new ArrayList<String>();
         ArrayList<String> ozetArray = new ArrayList<String>();
         ArrayList<String> adetArray = new ArrayList<String>();
+
+
+
             try {
                 SQLiteDatabase database = getContext().openOrCreateDatabase("Kitap", Context.MODE_PRIVATE, null);
                 database.execSQL("CREATE TABLE IF NOT EXISTS kitaplar(id INTEGER PRIMARY KEY, isim VARCHAR, yazar VARCHAR, ozet VARCHAR, adet VARCHAR)");
-                Cursor cursor = database.rawQuery("SELECT * FROM kitaplar", null);
+                Cursor cursor = database.rawQuery("SELECT * FROM kitaplar" , null);
 
                 int idIx = cursor.getColumnIndex("id");
                 int isimIx = cursor.getColumnIndex("isim");
@@ -117,6 +121,17 @@ public class MainFragment extends Fragment {
 
         recyclerView.setAdapter(adapter);
 
+        ImageView view1=view.findViewById(R.id.imageView8);
+        view1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                NavDirections navDirections=MainFragmentDirections.actionMainFragmentToKatagoriFragment();
+                Navigation.findNavController(v).navigate(navDirections);
+
+
+            }
+        });
 
 
 

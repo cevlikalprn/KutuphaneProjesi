@@ -1,5 +1,9 @@
 package com.alisamil.kutuphaneprojesi.view.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -38,7 +42,6 @@ public class KatagoriFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         String[] katagoriTurleri={"Edebiyat","Tarih","Kişisel Gelişim","Bilim-Kurgu","Masal","Hikaye","Öykü"};
 
 
@@ -46,7 +49,7 @@ public class KatagoriFragment extends Fragment {
         GridLayoutManager gridLayout=new GridLayoutManager(getContext(),2);
 
         recyclerView.setLayoutManager(gridLayout);
-        KatagoriRecylerAdapter adapter= new KatagoriRecylerAdapter(katagoriTurleri);
+        KatagoriRecylerAdapter adapter= new KatagoriRecylerAdapter(katagoriTurleri,getActivity());
 
         recyclerView.setAdapter(adapter);
 

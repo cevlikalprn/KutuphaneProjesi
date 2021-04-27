@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloo_thambi"
-            android:text="KATAGORİLER"
+            android:text="KATEGORİLER"
             android:textColor="#FFFFFF"
             android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="parent"

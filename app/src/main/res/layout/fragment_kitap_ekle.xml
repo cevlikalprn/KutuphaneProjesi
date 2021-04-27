@@ -32,20 +32,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/kitapEkleBackButton">
 
-        <ImageView
-            android:id="@+id/kitapEkleKitapIcon"
-            android:layout_width="158dp"
-            android:layout_height="146dp"
-            android:layout_marginTop="30dp"
-            android:src="@drawable/logo"
-            tools:layout_editor_absoluteX="126dp"
-            tools:layout_editor_absoluteY="26dp" />
-
         <TextView
             android:id="@+id/kitapEkleKitapAdiTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="80dp"
             android:fontFamily="@font/baloo_thambi"
             android:text="Kitap Adı"
             android:textColor="#FFFFFF"
@@ -86,6 +77,31 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/giris_edit_text"
             android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="4dp"
+            android:textColor="@color/white"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="355dp" />
+
+        <TextView
+            android:id="@+id/kategoriTextView_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/baloo_thambi"
+            android:text="Kategori"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="406dp" />
+
+        <EditText
+            android:id="@+id/kategori_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/giris_edit_text"
+            android:ems="10"
+            android:layout_marginTop="10dp"
             android:inputType="textPersonName"
             android:paddingLeft="4dp"
             android:textColor="@color/white"
