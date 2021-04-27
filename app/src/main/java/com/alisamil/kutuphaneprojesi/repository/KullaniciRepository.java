@@ -9,22 +9,29 @@ import com.alisamil.kutuphaneprojesi.data.KutuphaneDao;
 import com.alisamil.kutuphaneprojesi.data.KutuphaneDatabase;
 import com.alisamil.kutuphaneprojesi.model.Kullanici;
 
+import java.util.List;
+
 public class KullaniciRepository {
 
     private KutuphaneDao kutuphaneDao;
-    //private LiveData<List<Test>> allTests;
+    private LiveData<List<Kullanici>> tumKullanicilar;
 
     public KullaniciRepository(Application application)
     {
         KutuphaneDatabase database = KutuphaneDatabase.getDatabase(application);
         kutuphaneDao = database.kutuphaneDao();
-        //allTest = kutuphaneDao.getAllTests();
+        tumKullanicilar = kutuphaneDao.getTumKullanicilariAl();
     }
 
     public void insertKullanici(Kullanici kullanici)
     {
         new InsertKullaniciAsyncTask(kutuphaneDao).execute(kullanici);
 
+    }
+
+    public LiveData<List<Kullanici>> getTumKullanicilar()
+    {
+        return tumKullanicilar;
     }
 
     private static class InsertKullaniciAsyncTask extends AsyncTask<Kullanici, Void, Void> {
@@ -41,15 +48,4 @@ public class KullaniciRepository {
             return null;
         }
     }
-
-
-
-
-    /*
-    public LiveData<List<Test>> getAllTests()
-    {
-        return allTests;
-    }
-     */
-
 }

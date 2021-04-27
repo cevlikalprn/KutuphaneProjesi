@@ -22,7 +22,7 @@
         app:srcCompat="@drawable/logo" />
 
     <TextView
-        android:id="@+id/girisGirisButon"
+        android:id="@+id/txt_giris_giris"
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginStart="44dp"
@@ -33,31 +33,30 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/girisKayitButon"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_giris_kayit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/girisKayitButon"
+        android:id="@+id/txt_giris_kayit"
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/kayit_rectangle"
         android:fontFamily="@font/baloo_thambi"
         android:gravity="center"
-        android:onClick="kayitOnClick"
         android:text="Kayıt"
         android:textColor="#ff5722"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/girisGirisButon"
+        app:layout_constraintStart_toEndOf="@+id/txt_giris_giris"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/girisKullaniciAdiText"
+        android:id="@+id/txt_giris_kullanici_adi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloo_thambi"
@@ -72,7 +71,7 @@
         app:layout_constraintVertical_bias="0.567" />
 
     <TextView
-        android:id="@+id/girisSifreText"
+        android:id="@+id/txt_giris_sifre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloo_thambi"
@@ -87,7 +86,7 @@
         app:layout_constraintVertical_bias="0.732" />
 
     <EditText
-        android:id="@+id/girisKullaniciAdiEditText"
+        android:id="@+id/et_giris_kullanici_adi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/giris_edit_text"
@@ -104,7 +103,7 @@
         app:layout_constraintVertical_bias="0.643" />
 
     <EditText
-        android:id="@+id/girisSifreEditText"
+        android:id="@+id/et_kullanici_giris_sifre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/giris_edit_text"
@@ -121,13 +120,12 @@
         app:layout_constraintVertical_bias="0.809" />
 
     <Button
-        android:id="@+id/girisButton"
+        android:id="@+id/btn_giris"
         android:layout_width="153dp"
         android:layout_height="61dp"
         android:background="@drawable/giris_button"
         android:fontFamily="@font/baloo_thambi"
         android:gravity="center"
-        android:onClick="girisGirisButton"
         android:text="Giriş"
         android:textColor="#FFFFFF"
         android:textSize="20sp"

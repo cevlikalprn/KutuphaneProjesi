@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alisamil.kutuphaneprojesi.R;
@@ -26,12 +27,14 @@ public class KayitFragment extends Fragment implements View.OnClickListener {
     private EditText kullaniciAdi;
     private EditText kullaniciSifre;
     private Button buttonKayit;
+    private TextView girisEkrani;
 
     private void init()
     {
         kullaniciAdi = requireActivity().findViewById(R.id.et_kayit_kullanici_adi);
         kullaniciSifre = requireActivity().findViewById(R.id.et_kayit_kullanici_sifre);
         buttonKayit = requireActivity().findViewById(R.id.btn_kayit);
+        girisEkrani = requireActivity().findViewById(R.id.txt_kayit_giris);
     }
 
     @Override
@@ -47,7 +50,7 @@ public class KayitFragment extends Fragment implements View.OnClickListener {
         kullaniciViewModel = new ViewModelProvider(this).get(KullaniciViewModel.class);
 
         buttonKayit.setOnClickListener(this);
-
+        girisEkrani.setOnClickListener(this);
     }
 
     @Override
@@ -55,8 +58,8 @@ public class KayitFragment extends Fragment implements View.OnClickListener {
         switch (v.getId())
         {
             case R.id.btn_kayit:
-                String ad = kullaniciAdi.getText().toString();
-                String sifre = kullaniciSifre.getText().toString();
+                String ad = kullaniciAdi.getText().toString().trim();
+                String sifre = kullaniciSifre.getText().toString().trim();
                 if(ad.equals("") || sifre.equals(""))
                 {
                     Toast.makeText(requireContext(), "Lütfen Boşlukları Doldurunuz", Toast.LENGTH_LONG).show();
@@ -67,6 +70,10 @@ public class KayitFragment extends Fragment implements View.OnClickListener {
                     NavDirections action = KayitFragmentDirections.actionKayitFragmentToGirisFragment();
                     Navigation.findNavController(v).navigate(action);
                 }
+                break;
+            case R.id.txt_kayit_giris:
+                NavDirections action= KayitFragmentDirections.actionKayitFragmentToGirisFragment();
+                Navigation.findNavController(v).navigate(action);
                 break;
         }
     }
