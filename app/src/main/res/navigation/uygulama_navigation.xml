@@ -12,10 +12,14 @@
         tools:layout="@layout/fragment_giris" >
         <action
             android:id="@+id/action_girisFragment_to_kayitFragment"
-            app:destination="@id/kayitFragment" />
+            app:destination="@id/kayitFragment"
+            app:popUpTo="@id/girisFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_girisFragment_to_katagoriFragment"
-            app:destination="@id/katagoriFragment" />
+            app:destination="@id/katagoriFragment"
+            app:popUpTo="@id/girisFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/kitapEkleFragment"
@@ -33,7 +37,9 @@
         tools:layout="@layout/fragment_kayit" >
         <action
             android:id="@+id/action_kayitFragment_to_girisFragment"
-            app:destination="@id/girisFragment" />
+            app:destination="@id/girisFragment"
+            app:popUpTo="@id/kayitFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
