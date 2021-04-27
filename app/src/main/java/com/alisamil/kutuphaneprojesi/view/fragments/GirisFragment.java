@@ -1,4 +1,4 @@
-package com.alisamil.kutuphaneprojesi;
+package com.alisamil.kutuphaneprojesi.view.fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -16,6 +16,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
+import com.alisamil.kutuphaneprojesi.R;
 
 
 public class GirisFragment extends Fragment {
@@ -65,7 +68,7 @@ public class GirisFragment extends Fragment {
 
     public void kayitOnClick(View view){
 
-        NavDirections action=GirisFragmentDirections.actionGirisFragmentToKayitFragment();
+        NavDirections action= GirisFragmentDirections.actionGirisFragmentToKayitFragment();
         Navigation.findNavController(view).navigate(action);
 
     }

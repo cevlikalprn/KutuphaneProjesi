@@ -1,4 +1,4 @@
-package com.alisamil.kutuphaneprojesi;
+package com.alisamil.kutuphaneprojesi.view.fragments;
 
 import android.os.Bundle;
 
@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.GridLayout;
+
+import com.alisamil.kutuphaneprojesi.view.adapters.KatagoriRecylerAdapter;
+import com.alisamil.kutuphaneprojesi.R;
 
 
 public class KatagoriFragment extends Fragment {

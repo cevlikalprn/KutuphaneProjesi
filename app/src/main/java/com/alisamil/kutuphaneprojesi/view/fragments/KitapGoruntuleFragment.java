@@ -1,4 +1,4 @@
-package com.alisamil.kutuphaneprojesi;
+package com.alisamil.kutuphaneprojesi.view.fragments;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alisamil.kutuphaneprojesi.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link KitapEkleFragment#newInstance} factory method to
+ * Use the {@link KitapGoruntuleFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class KitapEkleFragment extends Fragment {
+public class KitapGoruntuleFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +26,7 @@ public class KitapEkleFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public KitapEkleFragment() {
+    public KitapGoruntuleFragment() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class KitapEkleFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment KitapEkleFragment.
+     * @return A new instance of fragment KitapGoruntuleFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static KitapEkleFragment newInstance(String param1, String param2) {
-        KitapEkleFragment fragment = new KitapEkleFragment();
+    public static KitapGoruntuleFragment newInstance(String param1, String param2) {
+        KitapGoruntuleFragment fragment = new KitapGoruntuleFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +61,6 @@ public class KitapEkleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_kitap_ekle, container, false);
+        return inflater.inflate(R.layout.fragment_kitap_goruntule, container, false);
     }
 }

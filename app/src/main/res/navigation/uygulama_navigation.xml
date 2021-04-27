@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/girisFragment"
-        android:name="com.alisamil.kutuphaneprojesi.GirisFragment"
+        android:name="com.alisamil.kutuphaneprojesi.view.fragments.GirisFragment"
         android:label="fragment_giris"
         tools:layout="@layout/fragment_giris" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/kitapEkleFragment"
-        android:name="com.alisamil.kutuphaneprojesi.KitapEkleFragment"
+        android:name="com.alisamil.kutuphaneprojesi.view.fragments.KitapEkleFragment"
         android:label="fragment_kitap_ekle"
         tools:layout="@layout/fragment_kitap_ekle" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/kayitFragment"
-        android:name="com.alisamil.kutuphaneprojesi.KayitFragment"
+        android:name="com.alisamil.kutuphaneprojesi.view.fragments.KayitFragment"
         android:label="fragment_kayit"
         tools:layout="@layout/fragment_kayit" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.alisamil.kutuphaneprojesi.MainFragment"
+        android:name="com.alisamil.kutuphaneprojesi.view.fragments.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/profilFragment"
-        android:name="com.alisamil.kutuphaneprojesi.ProfilFragment"
+        android:name="com.alisamil.kutuphaneprojesi.view.fragments.ProfilFragment"
         android:label="fragment_profil"
         tools:layout="@layout/fragment_profil" >
         <action
@@ -64,7 +64,7 @@
     </fragment>
     <fragment
         android:id="@+id/kitapGoruntuleFragment"
-        android:name="com.alisamil.kutuphaneprojesi.KitapGoruntuleFragment"
+        android:name="com.alisamil.kutuphaneprojesi.view.fragments.KitapGoruntuleFragment"
         android:label="fragment_kitap_goruntule"
         tools:layout="@layout/fragment_kitap_goruntule" >
         <action
@@ -76,7 +76,7 @@
     </fragment>
     <fragment
         android:id="@+id/katagoriFragment"
-        android:name="com.alisamil.kutuphaneprojesi.KatagoriFragment"
+        android:name="com.alisamil.kutuphaneprojesi.view.fragments.KatagoriFragment"
         android:label="fragment_katagori"
         tools:layout="@layout/fragment_katagori" >
         <action

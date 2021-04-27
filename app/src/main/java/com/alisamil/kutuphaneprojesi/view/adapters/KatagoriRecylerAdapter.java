@@ -1,4 +1,4 @@
-package com.alisamil.kutuphaneprojesi;
+package com.alisamil.kutuphaneprojesi.view.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.alisamil.kutuphaneprojesi.R;
 
 public class KatagoriRecylerAdapter extends RecyclerView.Adapter<KatagoriRecylerAdapter.KatagoriVH> {
 

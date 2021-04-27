@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_background"
-    tools:context=".KayitFragment"
+    tools:context=".view.fragments.KayitFragment"
     >
     <ImageView
         android:id="@+id/kayitLogo"
@@ -21,26 +21,25 @@
         app:srcCompat="@drawable/logo" />
 
     <TextView
-        android:id="@+id/kayitGirisButon"
+        android:id="@+id/txt_kayit_giris"
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginStart="44dp"
         android:background="@drawable/giris_rectangle_2"
         android:fontFamily="@font/baloo_thambi"
         android:gravity="center"
-        android:onClick="kayitGoGiris"
         android:text="Giriş"
         android:textColor="#ff5722"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/kayitKayitButon"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_kayit_kayit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.0" />
 
 
         <TextView
-        android:id="@+id/kayitKayitButon"
+        android:id="@+id/txt_kayit_kayit"
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:fontFamily="@font/baloo_thambi"
@@ -53,11 +52,11 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/kayitGirisButon"
+        app:layout_constraintStart_toEndOf="@+id/txt_kayit_giris"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/kayitKullaniciAdiText"
+        android:id="@+id/txt_kayit_kullanici_adi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloo_thambi"
@@ -72,7 +71,7 @@
         app:layout_constraintVertical_bias="0.567" />
 
     <TextView
-        android:id="@+id/kayitSifreText"
+        android:id="@+id/txt_kayit_sifre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloo_thambi"
@@ -87,7 +86,7 @@
         app:layout_constraintVertical_bias="0.732" />
 
         <EditText
-        android:id="@+id/kayitKullaniciAdiEditText"
+        android:id="@+id/et_kayit_kullanici_adi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/giris_edit_text"
@@ -104,7 +103,7 @@
         app:layout_constraintVertical_bias="0.643" />
 
         <EditText
-        android:id="@+id/kayitSifreEditText"
+        android:id="@+id/et_kayit_kullanici_sifre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/giris_edit_text"
@@ -121,13 +120,12 @@
         app:layout_constraintVertical_bias="0.809" />
 
     <Button
-        android:id="@+id/kayitButton"
+        android:id="@+id/btn_kayit"
         android:layout_width="153dp"
         android:layout_height="61dp"
         android:background="@drawable/giris_button"
         android:fontFamily="@font/baloo_thambi"
         android:gravity="center"
-        android:onClick="kayitButton"
         android:text="Kayıt"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
@@ -136,13 +134,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.94" />
-
-
-
-
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

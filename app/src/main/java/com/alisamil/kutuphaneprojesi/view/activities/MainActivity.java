@@ -1,8 +1,10 @@
-package com.alisamil.kutuphaneprojesi;
+package com.alisamil.kutuphaneprojesi.view.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.alisamil.kutuphaneprojesi.R;
 
 public class MainActivity extends AppCompatActivity {
 
