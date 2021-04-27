@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragments.KitapEkleFragment"
+    android:background="@drawable/main_background">
+
+    <ImageView
+        android:id="@+id/kitapEkleBackButton"
+        android:layout_width="49dp"
+        android:layout_height="47dp"
+        android:paddingLeft="5dp"
+        android:src="@drawable/back_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.007"></ImageView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/kitapEkleBackButton">
+
+        <ImageView
+            android:id="@+id/kitapEkleKitapIcon"
+            android:layout_width="158dp"
+            android:layout_height="146dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/logo"
+            tools:layout_editor_absoluteX="126dp"
+            tools:layout_editor_absoluteY="26dp" />
+
+        <TextView
+            android:id="@+id/kitapEkleKitapAdiTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/baloo_thambi"
+            android:text="Kitap Adı"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="185dp" />
+
+        <EditText
+            android:id="@+id/kitapEkleKitapAdiEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/giris_edit_text"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="4dp"
+            android:textColor="@color/white"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="246dp" />
+
+
+        <TextView
+            android:id="@+id/kitapEkleYazarAdiTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/baloo_thambi"
+            android:text="Kitap Yazarı"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="299dp" />
+
+        <EditText
+            android:id="@+id/kitapEkleKitapYazariEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/giris_edit_text"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="4dp"
+            android:textColor="@color/white"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="355dp" />
+
+        <TextView
+            android:id="@+id/kitapEkleKitapAdediText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/baloo_thambi"
+            android:text="Kitap Adedi"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="406dp" />
+
+
+        <EditText
+            android:id="@+id/asdsaa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/giris_edit_text"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="4dp"
+            android:textColor="@color/white"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="355dp" />
+
+        <TextView
+            android:id="@+id/kitapEkleKitapOzetiText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/baloo_thambi"
+            android:text="Kitap Özeti"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="521dp" />
+
+
+        <EditText
+            android:id="@+id/kitapEkleKitapOzetiEditText"
+            android:layout_width="311dp"
+            android:layout_height="71dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/giris_edit_text"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="4dp"
+            android:textColor="@color/white"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="584dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/giris_button"
+            android:fontFamily="@font/baloo_thambi"
+            android:text="EKLE"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+
+</FrameLayout>
