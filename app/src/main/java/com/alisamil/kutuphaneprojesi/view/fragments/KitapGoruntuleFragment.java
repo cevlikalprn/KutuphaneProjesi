@@ -1,60 +1,38 @@
 package com.alisamil.kutuphaneprojesi.view.fragments;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.alisamil.kutuphaneprojesi.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link KitapGoruntuleFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class KitapGoruntuleFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+
 
     public KitapGoruntuleFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment KitapGoruntuleFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static KitapGoruntuleFragment newInstance(String param1, String param2) {
-        KitapGoruntuleFragment fragment = new KitapGoruntuleFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -62,5 +40,44 @@ public class KitapGoruntuleFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_kitap_goruntule, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        int id=KitapGoruntuleFragmentArgs.fromBundle(getArguments()).getId();
+        try {
+            SQLiteDatabase database = getContext().openOrCreateDatabase("Kitap", Context.MODE_PRIVATE, null);
+            database.execSQL("CREATE TABLE IF NOT EXISTS kitaplar(id INTEGER PRIMARY KEY, isim VARCHAR, yazar VARCHAR, ozet VARCHAR, adet VARCHAR)");
+            Cursor cursor = database.rawQuery("SELECT * FROM kitaplar WHERE id="+id, null);
+
+            int idIx = cursor.getColumnIndex("id");
+            int isimIx = cursor.getColumnIndex("isim");
+            int yazarIx = cursor.getColumnIndex("yazar");
+            int ozetIx = cursor.getColumnIndex("ozet");
+            int adetIx = cursor.getColumnIndex("adet");
+
+            while (cursor.moveToNext()) {
+                String idString=Integer.toString(idIx);
+                String isim = cursor.getString(isimIx);
+                TextView kitapAdi=view.findViewById(R.id.kitapGoruntuleKitapAdi);
+                kitapAdi.setText("Kitap Adı: "+isim);
+                String yazar = cursor.getString(yazarIx);
+                TextView yazarAdi=view.findViewById(R.id.kitapGoruntuleKitapYazari);
+                yazarAdi.setText("Kitap Yazarı: "+yazar);
+                String ozet = cursor.getString(ozetIx);
+                TextView ozetText=view.findViewById(R.id.kitapGoruntuleKitapOzeti);
+                ozetText.setText("Kitap Özeti: "+ozet);
+                String adet = cursor.getString(adetIx);
+
+
+
+            }
+        }catch (Exception e){
+
+            e.printStackTrace();
+        }
+
+
     }
 }

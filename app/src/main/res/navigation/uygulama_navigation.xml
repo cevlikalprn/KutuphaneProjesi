@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/uygulama_navigation"
-    app:startDestination="@id/girisFragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/girisFragment"
@@ -73,6 +73,9 @@
         <action
             android:id="@+id/action_kitapGoruntuleFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/katagoriFragment"

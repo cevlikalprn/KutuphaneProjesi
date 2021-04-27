@@ -35,48 +35,48 @@
 
     <TextView
         android:id="@+id/kitapGoruntuleKitapAdi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="366dp"
+        android:layout_height="82dp"
         android:fontFamily="@font/baloo_thambi"
         android:text="Kitap Adı: "
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintHorizontal_bias="0.355"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.291" />
+        app:layout_constraintVertical_bias="0.191" />
 
     <TextView
         android:id="@+id/kitapGoruntuleKitapYazari"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="372dp"
+        android:layout_height="85dp"
         android:fontFamily="@font/baloo_thambi"
         android:text="Kitap Yazarı: "
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintHorizontal_bias="0.41"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.389" />
+        app:layout_constraintVertical_bias="0.354" />
 
     <TextView
         android:id="@+id/kitapGoruntuleKitapOzeti"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="369dp"
+        android:layout_height="261dp"
         android:fontFamily="@font/baloo_thambi"
         android:text="Kitap Özeti: "
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.065"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/kitapGoruntuleKitapYazari"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.487" />
+        app:layout_constraintVertical_bias="0.701" />
 
     <Button
         android:id="@+id/kitapGoruntuleOduncAl"
@@ -91,5 +91,5 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintVertical_bias="0.93" />
 </androidx.constraintlayout.widget.ConstraintLayout>

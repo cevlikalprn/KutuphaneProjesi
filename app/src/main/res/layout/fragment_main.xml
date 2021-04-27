@@ -60,7 +60,7 @@
             app:layout_constraintVertical_bias="0.076" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/maintoadd"
             android:layout_width="49dp"
             android:layout_height="47dp"
             android:src="@drawable/add"
@@ -98,10 +98,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="wrap_content"
+        android:id="@+id/anaEkranRecyler"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        />
+        android:layout_gravity="center" />
 
 
 </LinearLayout>
