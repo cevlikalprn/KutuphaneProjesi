@@ -32,11 +32,11 @@ public class GirisFragment extends Fragment implements View.OnClickListener{
 
     private KullaniciViewModel kullaniciViewModel;
     private List<Kullanici> kullaniciListesi;
-
     private EditText kullaniciAdi;
     private EditText kullaniciSifre;
     private Button buttonGiris;
     private TextView kayitEkrani;
+    private boolean kayitKontrol = false;
 
     private void init()
     {
@@ -76,7 +76,7 @@ public class GirisFragment extends Fragment implements View.OnClickListener{
         switch (v.getId())
         {
             case R.id.btn_giris:
-
+                kayitKontrol = false;
                 String ad = kullaniciAdi.getText().toString().trim();
                 String sifre = kullaniciSifre.getText().toString().trim();
                 if(ad.equals("") || sifre.equals(""))
@@ -87,23 +87,25 @@ public class GirisFragment extends Fragment implements View.OnClickListener{
                 {
                     if(!kullaniciListesi.isEmpty())
                     {
-                        for(int i = 0; i<kullaniciListesi.size(); i++){
-                            Kullanici kayitliKullanici = kullaniciListesi.get(i);
-                            if(kayitliKullanici.getKullaniciAdi().equals(ad))
-                            {
-                                if(kayitliKullanici.getKullaniciSifre().equals(sifre)){
-                                    NavDirections action = GirisFragmentDirections.actionGirisFragmentToKatagoriFragment();
-                                    Navigation.findNavController(v).navigate(action);
-                                }
-                                else
+                        for(int i = 0; i<kullaniciListesi.size(); i++)
+                        {
+                                Kullanici kayitliKullanici = kullaniciListesi.get(i);
+                                if(kayitliKullanici.getKullaniciAdi().equals(ad))
                                 {
-                                    Toast.makeText(requireContext(), "Şifreniz Yanlış", Toast.LENGTH_SHORT).show();
+                                    kayitKontrol = true;
+                                    if(kayitliKullanici.getKullaniciSifre().equals(sifre))
+                                    {
+                                        NavDirections action = GirisFragmentDirections.actionGirisFragmentToKatagoriFragment();
+                                        Navigation.findNavController(v).navigate(action);
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(requireContext(), "Kullanıcı Adı ya da Şifre Yanlış", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                Toast.makeText(requireContext(), "Kullanıcı Adınız Yanlış", Toast.LENGTH_SHORT).show();
-                            }
+                        }
+                        if(!kayitKontrol){
+                            Toast.makeText(requireContext(), "Kaydınız Bulunmamaktadır", Toast.LENGTH_SHORT).show();
                         }
                     }
                     else
