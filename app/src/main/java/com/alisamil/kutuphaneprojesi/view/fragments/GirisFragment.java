@@ -91,26 +91,23 @@ public class GirisFragment extends Fragment implements View.OnClickListener{
                     {
                         for(int i = 0; i<kullaniciListesi.size(); i++)
                         {
-                                Kullanici kayitliKullanici = kullaniciListesi.get(i);
-                                if(kayitliKullanici.getKullaniciAdi().equals(ad))
+                            Kullanici kayitliKullanici = kullaniciListesi.get(i);
+                            if(kayitliKullanici.getKullaniciAdi().equals(ad))
+                            {
+                                kayitKontrol = true;
+                                if(kayitliKullanici.getKullaniciSifre().equals(sifre))
                                 {
-                                    kayitKontrol = true;
-                                    if(kayitliKullanici.getKullaniciSifre().equals(sifre))
-                                    {
-                                        NavDirections action = GirisFragmentDirections.actionGirisFragmentToKatagoriFragment();
-                                        Navigation.findNavController(v).navigate(action);
+                                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("kullanici", Context.MODE_PRIVATE);
+                                    sharedPreferences.edit().putString("username",ad).apply();
 
-                                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("kullanici",Context.MODE_PRIVATE);
-                                        sharedPreferences.edit().putString("username",ad).apply();
-
-
-
-                                    }
-                                    else
-                                    {
-                                        Toast.makeText(requireContext(), "Kullanıcı Adı ya da Şifre Yanlış", Toast.LENGTH_SHORT).show();
-                                    }
+                                    NavDirections action = GirisFragmentDirections.actionGirisFragmentToKatagoriFragment();
+                                    Navigation.findNavController(v).navigate(action);
                                 }
+                                else
+                                {
+                                    Toast.makeText(requireContext(), "Kullanıcı Adı ya da Şifre Yanlış", Toast.LENGTH_SHORT).show();
+                                }
+                            }
                         }
                         if(!kayitKontrol){
                             Toast.makeText(requireContext(), "Kaydınız Bulunmamaktadır", Toast.LENGTH_SHORT).show();
