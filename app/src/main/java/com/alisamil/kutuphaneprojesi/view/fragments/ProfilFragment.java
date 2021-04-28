@@ -68,6 +68,7 @@ public class ProfilFragment extends Fragment {
         ArrayList<String> ozetArray = new ArrayList<String>();
 
         SQLiteDatabase database=getContext().openOrCreateDatabase("Kitap",Context.MODE_PRIVATE,null);
+        database.execSQL("CREATE TABLE IF NOT EXISTS kullaniciKitap (id INTEGER PRIMARY KEY,isim VARCHAR,yazar VARCHAR,ozet VARCHAR)");
         Cursor cursor = database.rawQuery("SELECT * FROM kullaniciKitap" , null);
         int isimIx = cursor.getColumnIndex("isim");
         int yazarIx = cursor.getColumnIndex("yazar");
