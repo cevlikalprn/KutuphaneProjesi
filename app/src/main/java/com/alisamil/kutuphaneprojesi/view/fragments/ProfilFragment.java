@@ -1,60 +1,47 @@
 package com.alisamil.kutuphaneprojesi.view.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.alisamil.kutuphaneprojesi.R;
+import com.alisamil.kutuphaneprojesi.view.adapters.AnaEkranAdapter;
+import com.alisamil.kutuphaneprojesi.view.adapters.ProfilAdapter;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfilFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
+
 public class ProfilFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public ProfilFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfilFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProfilFragment newInstance(String param1, String param2) {
-        ProfilFragment fragment = new ProfilFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -62,5 +49,70 @@ public class ProfilFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profil, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        SharedPreferences sharedPreferences= getActivity().getSharedPreferences("kullanici", Context.MODE_PRIVATE);
+        String kullaniciAdi=sharedPreferences.getString("username","");
+
+        TextView textView=view.findViewById(R.id.profilKullaniciAdi);
+        textView.setText("Hoşgeldiniz " +kullaniciAdi);
+
+
+
+        ArrayList<String> isimArray = new ArrayList<String>();
+        ArrayList<String> yazarArray = new ArrayList<String>();
+        ArrayList<String> ozetArray = new ArrayList<String>();
+
+        SQLiteDatabase database=getContext().openOrCreateDatabase("Kitap",Context.MODE_PRIVATE,null);
+        Cursor cursor = database.rawQuery("SELECT * FROM kullaniciKitap" , null);
+        int isimIx = cursor.getColumnIndex("isim");
+        int yazarIx = cursor.getColumnIndex("yazar");
+        int ozetIx = cursor.getColumnIndex("ozet");
+        while (cursor.moveToNext()) {
+            String isim = cursor.getString(isimIx);
+            String yazar = cursor.getString(yazarIx);
+            String ozet = cursor.getString(ozetIx);
+
+            isimArray.add(isim);
+            yazarArray.add(yazar);
+            ozetArray.add(ozet);
+        }
+
+        RecyclerView recyclerView=view.findViewById(R.id.profil_recycler);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        ProfilAdapter adapter= new ProfilAdapter(isimArray,yazarArray,ozetArray);
+
+        recyclerView.setAdapter(adapter);
+
+
+        ImageView imageView=view.findViewById(R.id.profil_backtoblack);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                NavDirections navDirections=ProfilFragmentDirections.actionProfilFragmentToMainFragment();
+                Navigation.findNavController(v).navigate(navDirections);
+
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

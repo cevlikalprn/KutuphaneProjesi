@@ -9,12 +9,15 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.alisamil.kutuphaneprojesi.view.adapters.KatagoriRecylerAdapter;
 import com.alisamil.kutuphaneprojesi.R;
@@ -52,6 +55,19 @@ public class KatagoriFragment extends Fragment {
         KatagoriRecylerAdapter adapter= new KatagoriRecylerAdapter(katagoriTurleri,getActivity());
 
         recyclerView.setAdapter(adapter);
+
+
+        ImageView imageView=view.findViewById(R.id.kategoriImageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                NavDirections navDirections= KatagoriFragmentDirections.actionKatagoriFragmentToProfilFragment();
+                Navigation.findNavController(v).navigate(navDirections);
+
+
+            }
+        });
 
 
 

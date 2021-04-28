@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/uygulama_navigation"
-    app:startDestination="@id/katagoriFragment">
+    app:startDestination="@id/girisFragment">
 
     <fragment
         android:id="@+id/girisFragment"
@@ -91,5 +91,8 @@
         <action
             android:id="@+id/action_katagoriFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_katagoriFragment_to_profilFragment"
+            app:destination="@id/profilFragment" />
     </fragment>
 </navigation>

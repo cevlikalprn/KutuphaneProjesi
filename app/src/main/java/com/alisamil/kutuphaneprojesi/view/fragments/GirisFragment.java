@@ -100,6 +100,11 @@ public class GirisFragment extends Fragment implements View.OnClickListener{
                                         NavDirections action = GirisFragmentDirections.actionGirisFragmentToKatagoriFragment();
                                         Navigation.findNavController(v).navigate(action);
 
+                                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("kullanici",Context.MODE_PRIVATE);
+                                        sharedPreferences.edit().putString("username",ad).apply();
+
+
+
                                     }
                                     else
                                     {

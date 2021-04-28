@@ -48,7 +48,6 @@ public class KayitFragment extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
         init();
         kullaniciViewModel = new ViewModelProvider(this).get(KullaniciViewModel.class);
-
         buttonKayit.setOnClickListener(this);
         girisEkrani.setOnClickListener(this);
     }

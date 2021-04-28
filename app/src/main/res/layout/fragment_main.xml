@@ -48,7 +48,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/kategoriImageView"
             android:layout_width="49dp"
             android:layout_height="47dp"
             android:src="@drawable/user_main"
@@ -65,7 +65,7 @@
             android:layout_height="47dp"
             android:src="@drawable/add"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintEnd_toStartOf="@+id/kategoriImageView"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

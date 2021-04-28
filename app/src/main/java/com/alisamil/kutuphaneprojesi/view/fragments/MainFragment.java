@@ -134,6 +134,19 @@ public class MainFragment extends Fragment {
         });
 
 
+        ImageView imageView1=view.findViewById(R.id.kategoriImageView);
+        imageView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                NavDirections navDirections=MainFragmentDirections.actionMainFragmentToProfilFragment();
+                Navigation.findNavController(v).navigate(navDirections);
+
+
+            }
+        });
+
+
 
 
 
