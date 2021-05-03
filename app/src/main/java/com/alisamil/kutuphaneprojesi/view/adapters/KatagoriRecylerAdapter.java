@@ -9,12 +9,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alisamil.kutuphaneprojesi.R;
 import com.alisamil.kutuphaneprojesi.view.fragments.KatagoriFragmentDirections;
+import com.alisamil.kutuphaneprojesi.view.fragments.MainFragment;
+import com.alisamil.kutuphaneprojesi.view.fragments.MainFragmentDirections;
 
 public class KatagoriRecylerAdapter extends RecyclerView.Adapter<KatagoriRecylerAdapter.KatagoriVH> {
 
@@ -48,10 +52,11 @@ public class KatagoriRecylerAdapter extends RecyclerView.Adapter<KatagoriRecyler
             @Override
             public void onClick(View v) {
 
+                KatagoriFragmentDirections.ActionKatagoriFragmentToMainFragment action
+                        = KatagoriFragmentDirections.actionKatagoriFragmentToMainFragment();
 
-                NavDirections action= KatagoriFragmentDirections.actionKatagoriFragmentToMainFragment();
+                action.setKategori(position);
                 Navigation.findNavController(v).navigate(action);
-
 
             }
         });

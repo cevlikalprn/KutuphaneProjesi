@@ -1,13 +1,11 @@
 package com.alisamil.kutuphaneprojesi.view.fragments;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
@@ -17,24 +15,35 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.alisamil.kutuphaneprojesi.R;
+import com.alisamil.kutuphaneprojesi.model.Kitap;
+import com.alisamil.kutuphaneprojesi.viewmodel.KitapViewModel;
 
 
 public class KitapEkleFragment extends Fragment {
 
+    private EditText kitapAdi;
+    private EditText kitapYazari;
+    private EditText kitapKategori;
+    private EditText kitapAdedi;
+    private EditText kitapOzeti;
+    private Button btnKitapEkle;
+    private ImageView geriGit;
 
+    private KitapViewModel kitapViewModel;
+    private int kategori = 0;
 
-    public KitapEkleFragment() {
-        // Required empty public constructor
-    }
-
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    private void init()
+    {
+        kitapAdi = requireActivity().findViewById(R.id.et_kitap_adi);
+        kitapYazari = requireActivity().findViewById(R.id.et_kitap_yazari);
+        kitapKategori = requireActivity().findViewById(R.id.et_kategori);
+        kitapAdedi = requireActivity().findViewById(R.id.et_kitap_adedi);
+        kitapOzeti = requireActivity().findViewById(R.id.et_kitap_ozeti);
+        btnKitapEkle = requireActivity().findViewById(R.id.btn_kitap_ekle);
+        geriGit = requireActivity().findViewById(R.id.img_btn_geri_kitap_ekle_fragment);
     }
 
     @Override
@@ -48,74 +57,80 @@ public class KitapEkleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        init();
 
+        kitapViewModel = new ViewModelProvider(this).get(KitapViewModel.class);
 
-        super.onViewCreated(view, savedInstanceState);
-
-
-        Button kayit=view.findViewById(R.id.button);
-        kayit.setOnClickListener(new View.OnClickListener() {
+        btnKitapEkle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText kitapAdi=(EditText) view.findViewById(R.id.kitapEkleKitapAdiEditText);
-                String bookName=kitapAdi.getText().toString();
-                System.out.println(bookName);
-
-                EditText kitapYazari=(EditText) view.findViewById(R.id.kitapEkleKitapYazariEditText);
-                String bookAuthor=kitapYazari.getText().toString();
-                EditText kitapOzeti=(EditText) view.findViewById(R.id.kitapEkleKitapOzetiEditText);
-                String bookSummary=kitapOzeti.getText().toString();
-                EditText kitapAdedi=(EditText) view.findViewById(R.id.asdsaa);
-                String bookPiece=kitapAdedi.getText().toString();
-                EditText kategorii=(EditText) view.findViewById(R.id.kategori_edit_text);
-                String kategori=kategorii.getText().toString();
-
-
-
-                try{
-
-                    SQLiteDatabase database = getContext().openOrCreateDatabase("Kitap", Context.MODE_PRIVATE,null);
-                    database.execSQL("CREATE TABLE IF NOT EXISTS kitaplar(id INTEGER PRIMARY KEY, isim VARCHAR, yazar VARCHAR, ozet VARCHAR, adet VARCHAR)");
-                    String insert="INSERT INTO kitaplar (isim,yazar,ozet,adet) VALUES (?,?,?,?)";
-                    SQLiteStatement statement=database.compileStatement(insert);
-                    statement.bindString(1,bookName);
-                    statement.bindString(2,bookAuthor);
-                    statement.bindString(3,bookSummary);
-                    statement.bindString(4,bookPiece);
-                    statement.execute();
-
-
-
-                }catch(Exception e){
-
-                    e.printStackTrace();
-
-                }
-
-
-                NavDirections action=KitapEkleFragmentDirections.actionKitapEkleFragmentToMainFragment();
-                Navigation.findNavController(v).navigate(action);
-
-
-
-            }
-
-
-        });
-
-        ImageView imageView=view.findViewById(R.id.kitapEkleBackButton);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                NavDirections action=KitapEkleFragmentDirections.actionKitapEkleFragmentToMainFragment();
-                Navigation.findNavController(v).navigate(action);
-
+                kitapEkle(v);
             }
         });
 
 
 
 
+        geriGit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavDirections action=KitapEkleFragmentDirections.actionKitapEkleFragmentToKatagoriFragment();
+                Navigation.findNavController(v).navigate(action);
+            }
+        });
+
+
+
+    }
+
+    private void kitapEkle(View view)
+    {
+        String kitap = kitapAdi.getText().toString().trim();
+        String yazar = kitapYazari.getText().toString().trim();
+        String kitapKategorisi = kitapKategori.getText().toString().trim();
+        String adedi = kitapAdedi.getText().toString().trim();
+        String ozet = kitapOzeti.getText().toString().trim();
+
+        if(kitap.equals("") || yazar.equals("") || kitapKategorisi.equals("") || adedi.equals("") || ozet.equals("")){
+            Toast.makeText(requireContext(),"Lütfen Boşlukları Doldurunuz", Toast.LENGTH_LONG).show();
+        }
+        else{
+            kitapKategorisiBelirle(kitapKategorisi);
+            kitapViewModel.insertKitap(new Kitap(kitap, yazar, kategori, Integer.parseInt(adedi), ozet));
+            Toast.makeText(requireContext(),"Kitap Eklendi", Toast.LENGTH_LONG).show();
+            NavDirections action=KitapEkleFragmentDirections.actionKitapEkleFragmentToKatagoriFragment();
+            Navigation.findNavController(view).navigate(action);
+        }
+
+    }
+
+    private void kitapKategorisiBelirle(String kitapKategorisi)
+    {
+        switch (kitapKategorisi){
+            case "Edebiyat":
+                kategori = 0;
+                break;
+            case "Tarih":
+                kategori = 1;
+                break;
+            case "Kişisel Gelişim":
+                kategori = 2;
+                break;
+            case  "Bilim Kurgu":
+                kategori = 3;
+                break;
+            case "Masal":
+                kategori = 4;
+                break;
+            case "Hikaye":
+                kategori = 5;
+                break;
+            case "Öykü":
+                kategori = 6;
+                break;
+            default:
+                kategori = 0;
+                break;
+        }
     }
 }

@@ -97,7 +97,7 @@ public class GirisFragment extends Fragment implements View.OnClickListener{
                                 kayitKontrol = true;
                                 if(kayitliKullanici.getKullaniciSifre().equals(sifre))
                                 {
-                                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("kullanici", Context.MODE_PRIVATE);
+                                    SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("kullanici", Context.MODE_PRIVATE);
                                     sharedPreferences.edit().putString("username",ad).apply();
 
                                     NavDirections action = GirisFragmentDirections.actionGirisFragmentToKatagoriFragment();

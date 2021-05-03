@@ -6,12 +6,14 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.alisamil.kutuphaneprojesi.model.Kitap;
 import com.alisamil.kutuphaneprojesi.model.Kullanici;
 
-@Database(entities = {Kullanici.class}, version = 1)
+@Database(entities = {Kullanici.class, Kitap.class}, version = 7, exportSchema = false)
 public abstract class KutuphaneDatabase extends RoomDatabase {
 
-    public abstract KutuphaneDao kutuphaneDao();
+    public abstract KullaniciDao kutuphaneDao();
+    public abstract KitapDao kitapDao();
 
     private static KutuphaneDatabase INSTANCE;
 

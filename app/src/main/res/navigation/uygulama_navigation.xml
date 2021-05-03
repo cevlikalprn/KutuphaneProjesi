@@ -27,8 +27,10 @@
         android:label="fragment_kitap_ekle"
         tools:layout="@layout/fragment_kitap_ekle" >
         <action
-            android:id="@+id/action_kitapEkleFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_kitapEkleFragment_to_katagoriFragment"
+            app:destination="@id/katagoriFragment"
+            app:popUpTo="@id/kitapEkleFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/kayitFragment"
@@ -47,17 +49,20 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_mainFragment_to_kitapEkleFragment"
-            app:destination="@id/kitapEkleFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_profilFragment"
             app:destination="@id/profilFragment" />
         <action
             android:id="@+id/action_mainFragment_to_kitapGoruntuleFragment"
-            app:destination="@id/kitapGoruntuleFragment" />
+            app:destination="@id/kitapGoruntuleFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_mainFragment_to_katagoriFragment"
             app:destination="@id/katagoriFragment" />
+        <argument
+            android:name="kategori"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/profilFragment"
@@ -66,7 +71,9 @@
         tools:layout="@layout/fragment_profil" >
         <action
             android:id="@+id/action_profilFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/profilFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/kitapGoruntuleFragment"
@@ -75,13 +82,17 @@
         tools:layout="@layout/fragment_kitap_goruntule" >
         <action
             android:id="@+id/action_kitapGoruntuleFragment_to_profilFragment"
-            app:destination="@id/profilFragment" />
+            app:destination="@id/profilFragment"
+            app:popUpTo="@id/kitapGoruntuleFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_kitapGoruntuleFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/kitapGoruntuleFragment"
+            app:popUpToInclusive="true" />
         <argument
-            android:name="id"
-            app:argType="integer" />
+            android:name="kitap"
+            app:argType="com.alisamil.kutuphaneprojesi.model.Kitap" />
     </fragment>
     <fragment
         android:id="@+id/katagoriFragment"
@@ -90,9 +101,16 @@
         tools:layout="@layout/fragment_katagori" >
         <action
             android:id="@+id/action_katagoriFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/katagoriFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_katagoriFragment_to_profilFragment"
             app:destination="@id/profilFragment" />
+        <action
+            android:id="@+id/action_katagoriFragment_to_kitapEkleFragment"
+            app:destination="@id/kitapEkleFragment"
+            app:popUpTo="@id/katagoriFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

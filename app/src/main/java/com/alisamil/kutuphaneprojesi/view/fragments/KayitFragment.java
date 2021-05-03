@@ -34,8 +34,7 @@ public class KayitFragment extends Fragment implements View.OnClickListener {
     private TextView girisEkrani;
     private boolean kullaniciKontrol = false;
 
-    private void init()
-    {
+    private void init() {
         kullaniciAdi = requireActivity().findViewById(R.id.et_kayit_kullanici_adi);
         kullaniciSifre = requireActivity().findViewById(R.id.et_kayit_kullanici_sifre);
         buttonKayit = requireActivity().findViewById(R.id.btn_kayit);

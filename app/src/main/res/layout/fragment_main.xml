@@ -15,7 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="256dp">
 
-
         <EditText
             android:id="@+id/searchEditText"
             android:layout_width="wrap_content"
@@ -48,7 +47,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:id="@+id/kategoriImageView"
+            android:id="@+id/img_btn_profil_main_fragment"
             android:layout_width="49dp"
             android:layout_height="47dp"
             android:src="@drawable/user_main"
@@ -59,17 +58,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.076" />
 
-        <ImageView
-            android:id="@+id/maintoadd"
-            android:layout_width="49dp"
-            android:layout_height="47dp"
-            android:src="@drawable/add"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/kategoriImageView"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.076" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -84,7 +72,7 @@
             app:layout_constraintVertical_bias="0.293" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/img_btn_geri_main_fragment"
             android:layout_width="49dp"
             android:layout_height="47dp"
             android:src="@drawable/back_icon"

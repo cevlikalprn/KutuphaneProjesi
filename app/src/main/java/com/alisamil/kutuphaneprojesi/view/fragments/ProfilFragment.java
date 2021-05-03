@@ -29,19 +29,12 @@ import java.util.ArrayList;
 
 public class ProfilFragment extends Fragment {
 
+    private ImageView btnGeri;
+    private TextView kullaniciAdi;
 
-
-    public ProfilFragment() {
-        // Required empty public constructor
-    }
-
-
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    private void init() {
+        btnGeri = requireActivity().findViewById(R.id.img_btn_geri_profil_fragment);
+        kullaniciAdi = requireActivity().findViewById(R.id.profilKullaniciAdi);
     }
 
     @Override
@@ -54,66 +47,19 @@ public class ProfilFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        init();
 
-        SharedPreferences sharedPreferences= getActivity().getSharedPreferences("kullanici", Context.MODE_PRIVATE);
-        String kullaniciAdi=sharedPreferences.getString("username","");
+        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("kullanici", Context.MODE_PRIVATE);
+        String kullanici = sharedPreferences.getString("kullanici", "Kullanıcı");
+        kullaniciAdi.setText(kullanici);
 
-        TextView textView=view.findViewById(R.id.profilKullaniciAdi);
-        textView.setText("Hoşgeldiniz " +kullaniciAdi);
-
-
-
-        ArrayList<String> isimArray = new ArrayList<String>();
-        ArrayList<String> yazarArray = new ArrayList<String>();
-        ArrayList<String> ozetArray = new ArrayList<String>();
-
-        SQLiteDatabase database=getContext().openOrCreateDatabase("Kitap",Context.MODE_PRIVATE,null);
-        database.execSQL("CREATE TABLE IF NOT EXISTS kullaniciKitap (id INTEGER PRIMARY KEY,isim VARCHAR,yazar VARCHAR,ozet VARCHAR)");
-        Cursor cursor = database.rawQuery("SELECT * FROM kullaniciKitap" , null);
-        int isimIx = cursor.getColumnIndex("isim");
-        int yazarIx = cursor.getColumnIndex("yazar");
-        int ozetIx = cursor.getColumnIndex("ozet");
-        while (cursor.moveToNext()) {
-            String isim = cursor.getString(isimIx);
-            String yazar = cursor.getString(yazarIx);
-            String ozet = cursor.getString(ozetIx);
-
-            isimArray.add(isim);
-            yazarArray.add(yazar);
-            ozetArray.add(ozet);
-        }
-
-        RecyclerView recyclerView=view.findViewById(R.id.profil_recycler);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        ProfilAdapter adapter= new ProfilAdapter(isimArray,yazarArray,ozetArray);
-
-        recyclerView.setAdapter(adapter);
-
-
-        ImageView imageView=view.findViewById(R.id.profil_backtoblack);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        btnGeri.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
-                NavDirections navDirections=ProfilFragmentDirections.actionProfilFragmentToMainFragment();
-                Navigation.findNavController(v).navigate(navDirections);
-
-
+                NavDirections action = ProfilFragmentDirections.actionProfilFragmentToMainFragment();
+                Navigation.findNavController(v).navigate(action);
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }

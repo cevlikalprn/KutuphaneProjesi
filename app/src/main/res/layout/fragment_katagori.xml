@@ -16,7 +16,7 @@
         android:layout_height="214dp">
 
         <ImageView
-            android:id="@+id/kategoriImageView"
+            android:id="@+id/img_btn_profil_kategori_fragment"
             android:layout_width="49dp"
             android:layout_height="47dp"
             android:src="@drawable/user_main"
@@ -52,6 +52,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.968" />
+
+        <ImageView
+            android:id="@+id/img_kitap_ekle"
+            android:layout_width="49dp"
+            android:layout_height="47dp"
+            android:src="@drawable/add"
+            app:layout_constraintBottom_toBottomOf="@+id/img_btn_profil_kategori_fragment"
+            app:layout_constraintEnd_toStartOf="@+id/img_btn_profil_kategori_fragment"
+            app:layout_constraintTop_toTopOf="@+id/img_btn_profil_kategori_fragment" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView

@@ -5,20 +5,19 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.alisamil.kutuphaneprojesi.model.Kitap;
 import com.alisamil.kutuphaneprojesi.model.Kullanici;
 
 import java.util.List;
 
 @Dao
-public interface KutuphaneDao {
+public interface KullaniciDao {
 
     @Insert
     void insertKullanici(Kullanici kullanici);
 
     @Query("SELECT * FROM kullanici_table")
     LiveData<List<Kullanici>> getTumKullanicilariAl();
-
-
 
     /*
     @Update
@@ -33,7 +32,5 @@ public interface KutuphaneDao {
     @Query("SELECT * FROM test_table ORDER BY test DESC")
     LiveData<List<Test>> getAllTests()
      */
-
-
 
 }

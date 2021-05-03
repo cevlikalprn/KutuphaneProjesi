@@ -1,11 +1,7 @@
 package com.alisamil.kutuphaneprojesi.view.fragments;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
-import android.os.Bundle;
 
+import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -15,31 +11,28 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.alisamil.kutuphaneprojesi.R;
-
-import java.sql.Statement;
+import com.alisamil.kutuphaneprojesi.model.Kitap;
+import com.alisamil.kutuphaneprojesi.viewmodel.KitapViewModel;
 
 
 public class KitapGoruntuleFragment extends Fragment {
-    String isim,yazar,ozet;
 
+    private TextView kitapAdi;
+    private TextView kitapYazarAdi;
+    private TextView kitapOzeti;
+    private ImageView btnGeri;
+    private ImageView btnProfil;
+    private KitapViewModel kitapViewModel;
 
-
-    public KitapGoruntuleFragment() {
-        // Required empty public constructor
-    }
-
-
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    private void init(){
+        kitapAdi = requireActivity().findViewById(R.id.txt_kitap_adi_goruntule);
+        kitapYazarAdi = requireActivity().findViewById(R.id.txt_kitap_yazari_goruntule);
+        kitapOzeti = requireActivity().findViewById(R.id.txt_kitap_ozeti_goruntule);
+        btnGeri = requireActivity().findViewById(R.id.img_btn_geri_kitap_goruntule_fragment);
+        btnProfil = requireActivity().findViewById(R.id.img_btn_profil_kitap_goruntule_fragment);
     }
 
     @Override
@@ -52,94 +45,29 @@ public class KitapGoruntuleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        int id=KitapGoruntuleFragmentArgs.fromBundle(getArguments()).getId();
-
-        try {
-            SQLiteDatabase database = getContext().openOrCreateDatabase("Kitap", Context.MODE_PRIVATE, null);
-            database.execSQL("CREATE TABLE IF NOT EXISTS kitaplar(id INTEGER PRIMARY KEY, isim VARCHAR, yazar VARCHAR, ozet VARCHAR, adet VARCHAR)");
-            Cursor cursor = database.rawQuery("SELECT * FROM kitaplar WHERE id="+id, null);
-
-            int idIx = cursor.getColumnIndex("id");
-            int isimIx = cursor.getColumnIndex("isim");
-            int yazarIx = cursor.getColumnIndex("yazar");
-            int ozetIx = cursor.getColumnIndex("ozet");
-            int adetIx = cursor.getColumnIndex("adet");
-
-            while (cursor.moveToNext()) {
-                String idString=Integer.toString(idIx);
-                isim = cursor.getString(isimIx);
-                TextView kitapAdi=view.findViewById(R.id.kitapGoruntuleKitapAdi);
-                kitapAdi.setText("Kitap Adı: "+isim);
-                yazar = cursor.getString(yazarIx);
-                TextView yazarAdi=view.findViewById(R.id.kitapGoruntuleKitapYazari);
-                yazarAdi.setText("Kitap Yazarı: "+yazar);
-                ozet = cursor.getString(ozetIx);
-                TextView ozetText=view.findViewById(R.id.kitapGoruntuleKitapOzeti);
-                ozetText.setText("Kitap Özeti: "+ozet);
-                String adet = cursor.getString(adetIx);
+        init();
 
 
+        Kitap kitap = KitapGoruntuleFragmentArgs.fromBundle(getArguments()).getKitap();
 
-            }
-        }catch (Exception e){
+        kitapAdi.setText("Kitap Adı: "+kitap.getKitapAdi());
+        kitapYazarAdi.setText("Yazar Adı: "+kitap.getKitapYazariAdi());
+        kitapOzeti.setText("Kitap Özeti: "+kitap.getKitapOzeti());
 
-            e.printStackTrace();
-        }
-
-
-        ImageView imageView1=view.findViewById(R.id.imageView6);
-        imageView1.setOnClickListener(new View.OnClickListener() {
+        btnGeri.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
-                NavDirections action=KitapGoruntuleFragmentDirections.actionKitapGoruntuleFragmentToMainFragment();
-                Navigation.findNavController(v).navigate(action);
-
-            }
-        });
-
-
-        ImageView imageView2=view.findViewById(R.id.imageView7);
-        imageView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                NavDirections navDirections=KitapGoruntuleFragmentDirections.actionKitapGoruntuleFragmentToProfilFragment();
+                NavDirections navDirections= KitapGoruntuleFragmentDirections.actionKitapGoruntuleFragmentToMainFragment();
                 Navigation.findNavController(v).navigate(navDirections);
-
-
-
             }
         });
 
-        Button button=view.findViewById(R.id.kitapGoruntuleOduncAl);
-        button.setOnClickListener(new View.OnClickListener() {
+        btnProfil.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
-                try {
-
-                    SQLiteDatabase database = getContext().openOrCreateDatabase("Kitap",Context.MODE_PRIVATE,null);
-                    database.execSQL("CREATE TABLE IF NOT EXISTS kullaniciKitap (id INTEGER PRIMARY KEY,isim VARCHAR,yazar VARCHAR,ozet VARCHAR)");
-                    String insert="INSERT INTO kullaniciKitap (isim,yazar,ozet) VALUES (?,?,?)";
-                    SQLiteStatement statement=database.compileStatement(insert);
-                    statement.bindString(1,isim);
-                    statement.bindString(2,yazar);
-                    statement.bindString(3,ozet);
-                    statement.execute();
-
-
-
-                }catch (Exception e){
-
-                    e.printStackTrace();
-
-                }
-
+                NavDirections navDirections= KitapGoruntuleFragmentDirections.actionKitapGoruntuleFragmentToProfilFragment();
+                Navigation.findNavController(v).navigate(navDirections);
             }
         });
-
-
-
     }
 }
